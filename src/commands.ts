@@ -87,7 +87,7 @@ export async function post(
 		.get();
 	const data = snapshot.data();
 	if (data) {
-		return message.channel.send(data?.data);
+		return message.channel.send("", { files: [data?.data] });
 	}
 	if (errorIfNotFound) {
 		return message.reply(

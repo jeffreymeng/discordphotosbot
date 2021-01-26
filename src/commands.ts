@@ -87,7 +87,13 @@ export async function post(
 		.get();
 	const data = snapshot.data();
 	if (data) {
-		return message.channel.send("", { files: [data?.data] });
+		const discordCDNUrl = "https://cdn.discordapp.com";
+		if (data?.data.substring(0, discordCDNUrl.length) == discordCDNUrl) {
+			return message.channel.send("", { files: [data?.data] });
+		} else {
+			return message.channel.send(data?.data);
+		}
+
 	}
 	if (errorIfNotFound) {
 		return message.reply(

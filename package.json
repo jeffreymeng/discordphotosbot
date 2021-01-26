@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc src/index.ts",
-    "start": "node src/index.js",
+    "build": "tsc src/index.ts --outDir build/",
+    "start": "node build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.remove = exports.post = exports.add = exports.ping = void 0;
+exports.help = exports.remove = exports.post = exports.add = exports.ping = void 0;
 var firebase_1 = require("firebase");
 if (firebase_1["default"].apps.length == 0) {
     firebase_1["default"].initializeApp({
@@ -119,7 +119,7 @@ exports.add = add;
 function post(message, args, errorIfNotFound) {
     if (errorIfNotFound === void 0) { errorIfNotFound = true; }
     return __awaiter(this, void 0, void 0, function () {
-        var server, snapshot, data;
+        var server, snapshot, data, discordCDNUrl;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -138,7 +138,13 @@ function post(message, args, errorIfNotFound) {
                     snapshot = _a.sent();
                     data = snapshot.data();
                     if (data) {
-                        return [2 /*return*/, message.channel.send(data === null || data === void 0 ? void 0 : data.data)];
+                        discordCDNUrl = "https://cdn.discordapp.com";
+                        if ((data === null || data === void 0 ? void 0 : data.data.substring(0, discordCDNUrl.length)) == discordCDNUrl) {
+                            return [2 /*return*/, message.channel.send("", { files: [data === null || data === void 0 ? void 0 : data.data] })];
+                        }
+                        else {
+                            return [2 /*return*/, message.channel.send(data === null || data === void 0 ? void 0 : data.data)];
+                        }
                     }
                     if (errorIfNotFound) {
                         return [2 /*return*/, message.reply("An image with that ID does not exist in this server.")];
@@ -179,3 +185,18 @@ function remove(message, args) {
     });
 }
 exports.remove = remove;
+function help(message) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, message.channel.send("**Help**\n" +
+                    "- **!ping**: Return's the ping of the bot\n" +
+                    "- **!add [nickname]** _With exactly one attachment, a photo_: Adds the attached photo with the nickname to the bot's database.\n" +
+                    "- **!add [nickname] \"[text]\"**: Adds text to the database, so the text (in quotes) is reposted instead of an image.\n" +
+                    "- **!add [nickname] [url to image]**: Adds the photo with the nickname to the bot's database.\n" +
+                    "- **!post [nickname]**: posts the image stored with the given nickname.\n" +
+                    "- **:[nickname]** _(no space between thr `$` and the name)_: Same as `!post [nickname]`, except it will ignore any non-existing nicknames rather than sending an error message.\n" +
+                    "- **!remove [nickname]**: removes the image stored with the given nickname. Can only be called by a user with the _Manage Server_ permission.\n")];
+        });
+    });
+}
+exports.help = help;

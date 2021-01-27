@@ -127,3 +127,14 @@ export async function remove(message: Message, args: string[]) {
 
 	return message.reply("Successfully deleted `" + name + "`");
 }
+
+export async function help(message: Message) {
+	return message.channel.send("**Help**\n" +
+		"- **!ping**: Return's the ping of the bot\n" +
+		"- **!add [nickname]** _With exactly one attachment, a photo_: Adds the attached photo with the nickname to the bot's database.\n" +
+		"- **!add [nickname] \"[text]\"**: Adds text to the database, so the text (in quotes) is reposted instead of an image.\n" +
+		"- **!add [nickname] [url to image]**: Adds the photo with the nickname to the bot's database.\n" +
+		"- **!post [nickname]**: posts the image stored with the given nickname.\n" +
+		"- **:[nickname]** _(no space between thr `$` and the name)_: Shortcut, same as `!post [nickname]`, except it will ignore any non-existing nicknames rather than sending an error message.\n" +
+		"- **!remove [nickname]**: removes the image stored with the given nickname. Can only be called by a user with the _Manage Server_ permission.\n");
+}

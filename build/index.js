@@ -58,7 +58,7 @@ client.on("message", function (message) { return __awaiter(void 0, void 0, void 
         if (!message.channel.isText()) {
             return [2 /*return*/];
         }
-        if (message.content.charAt(0) == "$" && message.content !== "$help") {
+        if (message.content.charAt(0) == ":" && message.content !== ":help") {
             return [2 /*return*/, Commands.post(message, [message.content.substring(1)], false)];
         }
         tokens = message.content.match(/(?:[^\s"]+|"[^"]*")+/g);
@@ -76,6 +76,9 @@ client.on("message", function (message) { return __awaiter(void 0, void 0, void 
                 return [2 /*return*/, Commands.post(message, args)];
             case "!remove":
                 return [2 /*return*/, Commands.remove(message, args)];
+            case "!help":
+            case "$help":
+                return [2 /*return*/, Commands.help(message)];
         }
         return [2 /*return*/];
     });

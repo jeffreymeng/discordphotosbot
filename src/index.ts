@@ -25,7 +25,7 @@ client.on("message", async (message) => {
 		return;
 	}
 
-	if (message.content.charAt(0) == "$" && message.content !== "$help") {
+	if (message.content.charAt(0) == ":" && message.content !== ":help") {
 		return Commands.post(message, [message.content.substring(1)], false)
 	}
 
@@ -46,6 +46,9 @@ client.on("message", async (message) => {
 			return Commands.post(message, args);
 		case "!remove":
 			return Commands.remove(message, args);
+		case "!help":
+		case "$help":
+			return Commands.help(message);
 	}
 });
 client.on("ready", () => {

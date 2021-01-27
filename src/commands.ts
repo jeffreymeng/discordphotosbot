@@ -135,6 +135,6 @@ export async function help(message: Message) {
 		"`!add [nickname] \"[text]\"`: Adds text to the database, so the text (in quotes) is reposted instead of an image.\n" +
 		"`!add [nickname] [url to image`: Adds the photo with the nickname to the bot's database.\n" +
 		"`!post [nickname]`: posts the image stored with the given nickname.\n" +
-		"`:[nickname]` _(no space between the `$` and the name)_: Shortcut, same as `!post [nickname]`, except it will ignore any non-existing nicknames rather than sending an error message.\n" +
+		"`$[nickname]` _(no space between the `$` and the name)_: Shortcut, same as `!post [nickname]`, except it will ignore any non-existing nicknames rather than sending an error message.\n" +
 		"`!remove [nickname]`: removes the image stored with the given nickname. Can only be called by a user with the _Manage Server_ permission.\n");
 }

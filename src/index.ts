@@ -25,7 +25,7 @@ client.on("message", async (message) => {
 		return;
 	}
 
-	if (message.content.charAt(0) == ":" && message.content !== ":help") {
+	if (message.content.charAt(0) == "$" && message.content !== "$help") {
 		return Commands.post(message, [message.content.substring(1)], false)
 	}
 

@@ -14,5 +14,5 @@ Allows users to add photos, and then repost them quickly later by refrencing the
 - **!add [nickname]** _With exactly one attachment, a photo_: Adds the attached photo with the nickname to the bot's database.
 - **!add [nickname] [url to image]**: Adds the photo with the nickname to the bot's database.
 - **!post [nickname]**: posts the image stored with the given nickname.
-- **$[nickname]** _(no space between thr `$` and the name)_: Same as `!post [nickname]`, except it will ignore any non-existing nicknames rather than sending an error message.
+- **$[nickname]** _(no space between the `$` and the name)_: Same as `!post [nickname]`, except it will ignore any non-existing nicknames rather than sending an error message.
 - **!remove [nickname]**: removes the image stored with the given nickname. Can only be called by a user with the _Manage Server_ permission.

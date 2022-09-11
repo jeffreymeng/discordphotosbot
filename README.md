@@ -11,7 +11,7 @@ Allows users to add photos, and then repost them quickly later by refrencing the
 #### Commands
 
 - **!ping**: Return's the ping of the bot
-- **!add [nickname]** _With exactly one attachment, a photo_: Adds the attached photo with the nickname to the bot's database. If the message ends with a link to a media.discordapp.net image link, discord automatically turns it into an attachment, so !add [nickname] [discord image link] also works.
+- **!add [nickname]** _With exactly one attachment, a photo_: Adds the attached photo with the nickname to the bot's database.
 - **!add [nickname] [url to image]**: Adds the photo with the nickname to the bot's database.
 - **!post [nickname]**: posts the image stored with the given nickname.
 - **$[nickname]** _(no space between the `$` and the name)_: Same as `!post [nickname]`, except it will ignore any non-existing nicknames rather than sending an error message.

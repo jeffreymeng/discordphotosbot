@@ -3,10 +3,6 @@ import * as Commands from "./commands";
 
 import firebase from "firebase";
 
-console.log("Received api keys")
-console.log(process.env.FIREBASE_API_KEY)
-console.log(process.env.DISCORD_BOT_TOKEN)
-
 if (!process.env.FIREBASE_API_KEY || !process.env.DISCORD_BOT_TOKEN) {
 	throw new Error("Unable to locate at least one of FIREBASE_API_KEY or DISCORD_BOT_TOKEN environment variables")
 }

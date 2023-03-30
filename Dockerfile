@@ -11,7 +11,3 @@ COPY . .
 
 RUN yarn build
 CMD npm run start
-
-
-EXPOSE 80
-EXPOSE 443

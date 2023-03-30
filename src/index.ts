@@ -3,14 +3,23 @@ import * as Commands from "./commands";
 
 import firebase from "firebase";
 
+console.log("Received api keys")
+console.log(process.env.FIREBASE_API_KEY)
+console.log(process.env.DISCORD_BOT_TOKEN)
+
+if (!process.env.FIREBASE_API_KEY || !process.env.DISCORD_BOT_TOKEN) {
+	throw new Error("Unable to locate at least one of FIREBASE_API_KEY or DISCORD_BOT_TOKEN environment variables")
+}
+
+
 if (firebase.apps.length == 0) {
 	firebase.initializeApp({
-		apiKey: "AIzaSyAMK2wmeTASZrutU26aLH54Q0dtUdazScQ",
+		apiKey: process.env.FIREBASE_API_KEY,
 		authDomain: "discordphotosbot.firebaseapp.com",
 		projectId: "discordphotosbot",
 		storageBucket: "discordphotosbot.appspot.com",
 		messagingSenderId: "705173176849",
-		appId: "1:705173176849:web:3485738937494d86f4e7b0",
+		appId: "1:705173176849:web:91644cd19d1c363cf4e7b0"
 	});
 }
 const app = firebase.apps[0];

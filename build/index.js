@@ -39,14 +39,20 @@ exports.__esModule = true;
 var Discord = require("discord.js");
 var Commands = require("./commands");
 var firebase_1 = require("firebase");
+console.log("Received api keys");
+console.log(process.env.FIREBASE_API_KEY);
+console.log(process.env.DISCORD_BOT_TOKEN);
+if (!process.env.FIREBASE_API_KEY || !process.env.DISCORD_BOT_TOKEN) {
+    throw new Error("Unable to locate at least one of FIREBASE_API_KEY or DISCORD_BOT_TOKEN environment variables");
+}
 if (firebase_1["default"].apps.length == 0) {
     firebase_1["default"].initializeApp({
-        apiKey: "AIzaSyAMK2wmeTASZrutU26aLH54Q0dtUdazScQ",
+        apiKey: process.env.FIREBASE_API_KEY,
         authDomain: "discordphotosbot.firebaseapp.com",
         projectId: "discordphotosbot",
         storageBucket: "discordphotosbot.appspot.com",
         messagingSenderId: "705173176849",
-        appId: "1:705173176849:web:3485738937494d86f4e7b0"
+        appId: "1:705173176849:web:91644cd19d1c363cf4e7b0"
     });
 }
 var app = firebase_1["default"].apps[0];
@@ -58,7 +64,7 @@ client.on("message", function (message) { return __awaiter(void 0, void 0, void 
         if (!message.channel.isText()) {
             return [2 /*return*/];
         }
-        if (message.content.charAt(0) == ":" && message.content !== ":help") {
+        if (message.content.charAt(0) == "$" && message.content !== "$help") {
             return [2 /*return*/, Commands.post(message, [message.content.substring(1)], false)];
         }
         tokens = message.content.match(/(?:[^\s"]+|"[^"]*")+/g);
